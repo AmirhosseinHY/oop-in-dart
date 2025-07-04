@@ -19,8 +19,8 @@ class Student extends Person with Lessons {
   final int studentId;
   final String fieldOFstudy;
 
-  Student(super._name,super._id,super._phone,super._address,this.studentId,this.fieldOFstudy, List<String> studentLesson){
-    lessons = studentLesson;
+  Student(super._name,super._id,super._phone,super._address,this.studentId,this.fieldOFstudy, List<String> studentLessons){
+    lessons = studentLessons;
   }
   Student.English(super._name,super._id,super._phone,super._address,this.studentId):fieldOFstudy='English literature';
 
@@ -45,8 +45,8 @@ class Teacher extends Person with Lessons {
   final Certificate lastCertificate;
   final int salary;
 
-  Teacher(super._name,super._id,super._phone,super._address,this.lastCertificate,this.salary, List<String> teacherLesson){
-    lessons = teacherLesson;
+  Teacher(super._name,super._id,super._phone,super._address,this.lastCertificate,this.salary, List<String> teacherLessons){
+    lessons = teacherLessons;
   }
 
   @override
