@@ -19,7 +19,7 @@ class Student extends Person with Lessons {
   final int studentId;
   final String fieldOFstudy;
 
-  Student(super._name,super._id,super._phone,super._address,this.studentId,this.fieldOFstudy, String studentLesson){
+  Student(super._name,super._id,super._phone,super._address,this.studentId,this.fieldOFstudy, List<String> studentLesson){
     lessons = studentLesson;
   }
   Student.English(super._name,super._id,super._phone,super._address,this.studentId):fieldOFstudy='English literature';
@@ -45,7 +45,7 @@ class Teacher extends Person with Lessons {
   final Certificate lastCertificate;
   final int salary;
 
-  Teacher(super._name,super._id,super._phone,super._address,this.lastCertificate,this.salary, String teacherLesson){
+  Teacher(super._name,super._id,super._phone,super._address,this.lastCertificate,this.salary, List<String> teacherLesson){
     lessons = teacherLesson;
   }
 
@@ -60,21 +60,21 @@ class Teacher extends Person with Lessons {
 }
 
 mixin Lessons{
-  String _lessons ='';
-  String get lessons => _lessons;
-  set lessons(String value) => _lessons = value;
+  List<String> _lessons =[];
+  List<String> get lessons => _lessons;
+  set lessons(List<String> value) => _lessons.addAll(value);
 }
 
 void main() {
-  Student student = new Student('amir', 1001, 921, 'tehran', 1111, 'math-physics','history');
+  Student student = new Student('amir', 1001, 921, 'tehran', 1111, 'math-physics',['history','Geography']);
   student.personInfo();
   student.personDoing();
-  //student.lessons='Geography';  //You can define studentLesson empty when creating an instance of that class and then set it later via a setter.
+  student.lessons = ['literature'];
   print(student.lessons);
 
-  Teacher teacher = new Teacher('saeed', 1002, 918, 'delijan', Certificate.phd, 45000,'chemistry');
+  Teacher teacher = new Teacher('saeed', 1002, 918, 'delijan', Certificate.phd, 45000,['chemistry','Algebra']);
   teacher.personInfo();
   teacher.personDoing();
-  //teacher.lessons='Algebra'; //You can define teacherLesson empty when creating an instance of that class and then set it later via a setter.
+  teacher.lessons = ['geometry'];
   print(teacher.lessons);
 }
